@@ -1,6 +1,14 @@
 # #fistbump 👊👊
 
+forked from benbarbersmith/fistbump
+
 A knuckle tattoo generator — type your own text or randomize, pick a font, adjust letter positions, then save or share your creation.
+
+## Live Demo
+
+https://fistbump.996.ninja
+
+![](https://img.996.ninja/ninjutsu/083d740489e0ed551a96b98cf2e36174.png)
 
 ## Features
 
