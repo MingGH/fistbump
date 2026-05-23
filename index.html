@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <title>#fistbump - Knuckle Tattoo Generator</title>
   <link type="text/css" rel="stylesheet" href="app.css" />
-  <link href="https://fonts.googleapis.com/css?family=Overpass+Mono|Amatic+SC:700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Overpass+Mono&family=Amatic+SC:wght@700&family=Special+Elite&family=Permanent+Marker&family=Rock+Salt&family=Bangers&family=Metal+Mania&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -18,25 +18,46 @@
   <div id="content">
     <div class="fist" id="left">
       <p>
-        <span class="letter" id="finger0"></span>
-        <span class="letter" id="finger1"></span>
-        <span class="letter" id="finger2"></span>
-        <span class="letter" id="finger3"></span>
+        <span class="letter" id="finger0" draggable="false"></span>
+        <span class="letter" id="finger1" draggable="false"></span>
+        <span class="letter" id="finger2" draggable="false"></span>
+        <span class="letter" id="finger3" draggable="false"></span>
       </p>
     </div>
     <div class="fist" id="right">
       <p>
-        <span class="letter" id="finger4"></span>
-        <span class="letter" id="finger5"></span>
-        <span class="letter" id="finger6"></span>
-        <span class="letter" id="finger7"></span>
+        <span class="letter" id="finger4" draggable="false"></span>
+        <span class="letter" id="finger5" draggable="false"></span>
+        <span class="letter" id="finger6" draggable="false"></span>
+        <span class="letter" id="finger7" draggable="false"></span>
       </p>
     </div>
   </div>
-  <div id="footer">
-    <p><button id="randomize" class="button">Randomize!</button></p>
+  <div id="adjust-hint">
+    <span>💡 Drag letters to adjust position</span>
   </div>
+  <div id="footer">
+    <p>
+      <select id="font-picker" class="font-select">
+        <option value="Overpass Mono">Typewriter</option>
+        <option value="Special Elite">Old School</option>
+        <option value="Permanent Marker">Marker</option>
+        <option value="Rock Salt">Handwritten</option>
+        <option value="Bangers">Comic</option>
+        <option value="Metal Mania">Gothic</option>
+      </select>
+      <input type="text" id="custom-text" maxlength="8" placeholder="Type 8 letters..." class="text-input" />
+    </p>
+    <p>
+      <button id="randomize" class="button">Randomize!</button>
+      <button id="save-img" class="button">Save Image</button>
+      <button id="share" class="button">Share</button>
+    </p>
+  </div>
+
+  <!-- Social card modal removed -->
   <script type="text/javascript" src="words.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <script type="text/javascript" src="app.js" defer></script>
 </body>
 

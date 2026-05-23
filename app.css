@@ -90,6 +90,30 @@ span.letter {
   position: relative;
   float: left;
   font-family: 'Overpass Mono', sans-serif;
+  cursor: grab;
+  user-select: none;
+  transition: box-shadow 0.2s;
+}
+
+span.letter:hover {
+  box-shadow: 0 0 8px rgba(255, 82, 82, 0.5);
+  border-radius: 4px;
+}
+
+span.letter.dragging {
+  cursor: grabbing;
+  opacity: 0.7;
+}
+
+#adjust-hint {
+  position: absolute;
+  top: 16vh;
+  width: 100vw;
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
+  font-size: 2.5vh;
+  color: rgba(0,0,0,0.4);
+  pointer-events: none;
 }
 
 span.letter#finger0 {
@@ -161,10 +185,129 @@ span.letter#finger7 {
 #footer {
   position: absolute;
   bottom: 0px;
-  height: 12vh;
+  height: 18vh;
   width: 100vw;
   margin: 0 auto 0 auto;
   text-align: center;
+}
+
+.text-input {
+  font-family: 'Overpass Mono', sans-serif;
+  font-size: 3vh;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  padding: 0.3em 0.5em;
+  border: 2px solid rgb(255, 82, 82);
+  border-radius: 0.25em;
+  outline: none;
+  width: 8em;
+  vertical-align: middle;
+}
+
+.text-input:focus {
+  border-color: rgb(200, 50, 50);
+  box-shadow: 0 0 5px rgba(255, 82, 82, 0.4);
+}
+
+.font-select {
+  font-family: 'Amatic SC', cursive;
+  font-size: 3vh;
+  padding: 0.3em 0.5em;
+  border: 2px solid rgb(255, 82, 82);
+  border-radius: 0.25em;
+  outline: none;
+  background: #fff;
+  color: #333;
+  vertical-align: middle;
+  margin-right: 0.5em;
+  cursor: pointer;
+}
+
+/* Fist bump animation */
+@keyframes bumpLeft {
+  0% { transform: translateX(0); }
+  40% { transform: translateX(8vw); }
+  55% { transform: translateX(6vw); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes bumpRight {
+  0% { transform: translateX(0); }
+  40% { transform: translateX(-8vw); }
+  55% { transform: translateX(-6vw); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes letterFlip {
+  0% { transform: rotateX(0deg); opacity: 1; }
+  40% { transform: rotateX(90deg); opacity: 0; }
+  60% { transform: rotateX(90deg); opacity: 0; }
+  100% { transform: rotateX(0deg); opacity: 1; }
+}
+
+#left.bumping {
+  animation: bumpLeft 0.6s ease-in-out;
+}
+
+#right.bumping {
+  animation: bumpRight 0.6s ease-in-out;
+}
+
+span.letter.flipping {
+  animation: letterFlip 0.6s ease-in-out;
+}
+
+/* Social card modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  max-width: 90vw;
+}
+
+.modal-content canvas {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.modal-actions {
+  margin-top: 16px;
+}
+
+.button-outline {
+  background: #fff;
+  color: rgb(255, 82, 82);
+  border: 2px solid rgb(255, 82, 82);
+  margin-left: 8px;
 }
 
 a {
